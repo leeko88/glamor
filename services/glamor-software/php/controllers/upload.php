@@ -25,7 +25,7 @@
                 /* se enviar a foto, insere o nome da foto no banco de dados */
                 if(move_uploaded_file($tmp, $caminhoServer)){
                     //mysql_query("INSERT INTO fotos (foto) VALUES (".$nome_atual.")");
-                    echo "<img class='thumb' src='../../../images/glamor-software/perfil/emp_id_1.jpg'>"; //imprime a foto na tela
+                    header("Location: ../../login.php");
                 }else{
                     echo "Falha ao enviar";
                 }

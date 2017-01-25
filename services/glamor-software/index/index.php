@@ -94,10 +94,10 @@ $empresa = $_SESSION['user_emp'];
         <div id="main-sidebar" class="sidebar sidebar-inverse">
             <div class="sidebar-item">
                 <div class="media profile">
-                    <div class="media-thumb media-left thumb-bordereb">
                     <form id="formularioImage" method="post" enctype="multipart/form-data" action="../php/controllers/upload.php">
                         <input style="display:none" type="file" id="imageUpload" name="imageUpload" />
                     </form>
+                    <div class="media-thumb media-left thumb-bordereb">                    
                     <a href="javascript:void(0)" class="img-shadow" id="imagePerfil"><img class="thumb" src="../../../images/glamor-software/perfil/emp_id_1.jpg"></a>
                     </div>
                     <div class="media-body">
