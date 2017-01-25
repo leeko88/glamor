@@ -1,6 +1,6 @@
 <?php
     include('../connection/connection.php');
-    $pasta = "../../../images/glamor-software/perfil/";
+    $pasta = "../../../../images/glamor-software/perfil/";
     
     /* formatos de imagem permitidos */
     $permitidos = array(".jpg",".jpeg",".gif",".png", ".bmp");
