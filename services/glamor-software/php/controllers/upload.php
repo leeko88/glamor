@@ -19,15 +19,15 @@
             $tamanho = round($tamanho_imagem / 1024);
             
             if($tamanho < 1024){ //se imagem for até 1MB envia
-                $nome_atual = md5(uniqid(time())).$ext; //nome que dará a imagem
+                //$nome_atual = md5(uniqid(time())).$ext; //nome que dará a imagem
                 $tmp = $_FILES['imageUpload']['tmp_name']; //caminho temporário da imagem
-                $caminhoServer = $pasta.$nome_atual;
+                $caminhoServer = $pasta.'emp_id_1.jpg';
                 /* se enviar a foto, insere o nome da foto no banco de dados */
                 if(move_uploaded_file($tmp, $caminhoServer)){
-                    mysql_query("INSERT INTO fotos (foto) VALUES (".$nome_atual.")");
-                    echo "<img src='fotos/".$nome_atual."' id='previsualizar'>"; //imprime a foto na tela
+                    //mysql_query("INSERT INTO fotos (foto) VALUES (".$nome_atual.")");
+                    echo "<img class='thumb' src='../../../images/glamor-software/perfil/emp_id_1.jpg'>"; //imprime a foto na tela
                 }else{
-                    echo $caminhoServer;
+                    echo "Falha ao enviar";
                 }
             }else{
                 echo "Tamanho máximo 1MB";
