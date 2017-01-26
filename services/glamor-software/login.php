@@ -2,7 +2,7 @@
 session_start();
 require_once('php/connection/connection.php');
 if(isLoggedIn()){
- header('Location: index/index.php'); 
+ header('Location: index/components/home/index.php'); 
 }
 ?>
 

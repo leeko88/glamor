@@ -7,6 +7,6 @@ $('#imagePerfil').click(function(){
          //$('#visualizar').html('<img src="ajax-loader.gif" alt="Enviando..."/> Enviando...');
         /* Efetua o Upload sem dar refresh na pagina */           
         $('#formularioImage').ajaxForm({
-            target:'#imagePerfil' // o callback será no elemento com o id #visualizar
          }).submit();
-     });
+         $("#refresh").show();
+});

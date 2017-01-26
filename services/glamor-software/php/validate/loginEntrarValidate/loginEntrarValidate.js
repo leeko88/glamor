@@ -18,7 +18,7 @@ if(valorDoSpanII == 'EMPRESA'){
         $('#idErroLogin').append('<strong style="color: red">Atenção!</strong> O ID deve conter apenas numeros.');
         resultadoVerificacaoEntrar = false;
     }else{
-        verificarCodEmpresaII('glamor_emp_'+$('#idLogin').val().trim()); 
+        //verificarCodEmpresaII('glamor_emp_'+$('#idLogin').val().trim()); 
     }
     //password
     if($('#idPassword').val().trim() == ''){
@@ -52,7 +52,7 @@ if(valorDoSpanII == 'EMPRESA'){
         $('#idErroEmpresa').append('<strong style="color: red">Atenção!</strong> O ID deve conter apenas numeros.');
         resultadoVerificacaoEntrar = false;
     }else{
-        verificarCodEmpresaII('glamor_emp_'+$('#idEmpresa').val().trim()); 
+        //verificarCodEmpresaII('glamor_emp_'+$('#idEmpresa').val().trim()); 
     }
 }
    //Limpar erros do campo de cadastro (outro form)
@@ -69,7 +69,7 @@ if(valorDoSpanII == 'EMPRESA'){
             }, function(resultado){
                 var dadoRecebido = resultado;
                 if(dadoRecebido){
-                    window.location.replace("index/index.php");
+                    window.location.replace("index/components/home/index.php");
                 }else{
                     $('#MessageForm').text('');
                     $('#MessageForm').removeClass( 'hide' );
@@ -139,14 +139,16 @@ function isNumberII(codigo) {
     return !isNaN(parseFloat(codigo)) && isFinite(codigo);
 }
 
-//função verificar codigo de empresa com conexão
+/*função verificar codigo de empresa com conexão
 function verificarCodEmpresaII(codigoEmpresa){
 //O codigoEmpresa é o banco de dados da empresa.
 $.get("php/validate/loginEntrarValidate/loginEntrarValidate.php?codigoEmpresa="+codigoEmpresa, function(resultadoVerificacaoCodEmpresa){
  var dadoRecebido = resultadoVerificacaoCodEmpresa;
-        if(dadoRecebido == true){
+ alert(dadoRecebido);
+        if(!dadoRecebido){
             $('#idErroEmpresa').removeClass( 'hide' );
             $('#idErroEmpresa').append('<strong style="color: red">Atenção!</strong> Empresa não encontrada.');
         } 
     });
 }
+*/

@@ -1,3 +1,7 @@
+<?php
+require_once('../comuns/session.php');
+?>
+
 <!DOCTYPE html>
 
 <html lang="pt-BR">
@@ -11,24 +15,24 @@
 <meta name="description" content="Cadastrar clientes para serem utilizados para pesquisas e vendas">
 <meta name="author" content="Infor Sistema">
 
-    <!-- Le styles and Touch icons-->
-<?php include_once '../comuns/style-icons.html'; ?>
-    <!-- end -->
+     <!-- Styles e Icons -->
+<?php include_once '../comuns/style-icons.html';?>
+    <!-- End Sytles e Icons -->
 
 </head>
 
 <body class="sidebar-left ">
 <div class="page-container">
     
-    <!-- header container -->
-<?php include_once '../comuns/header-container.html'; ?>
-    <!-- // end header-container -->
+    <!-- Header Containner -->
+<?php include_once '../comuns/header-container.html';?>
+    <!-- // END header-container -->
     
     <div id="main-container">
 
-        <!-- sidebar-main -->
-<?php include_once '../comuns/sidebar-main.html'; ?>
-        <!-- //end sidebar-main -->
+<!-- Saidebar MAIN -->
+<?php include_once '../comuns/sidebar-main.html';?>
+     <!-- // END sidebar -->
         
         <div id="main-content" class="main-content container-fluid">
             <div class="row-fluid page-head">
@@ -1020,17 +1024,21 @@
     </div>
     <!-- // main-container  -->
     
-    <!-- footer -->
-<?php include_once '../comuns/footer.html'; ?>
-    <!-- // end footer-fix  --> 
+   <!-- footer -->
+<?php include_once '../comuns/footer.html';?>
+    <!-- // END footer-fix  --> 
     
 </div>
 <!-- // page-container  --> 
 
-<!-- Le javascript --> 
-<?php include_once '../comuns/javascript.html'; ?>
-<!-- Only This Demo Page --> 
+<!-- javascripts comuns --> 
+<?php include_once '../comuns/javascript.html';?>
+<!-- End javascript comuns -->
+
+<!-- javascript da pagina -->
 <script src="../../../../../js/glamor-software/form.js"></script> 
+<script src="../../../../../js/bootstrap/bootstrap-wysihtml5/wysihtml5.js"></script>
 <!-- end javascript -->
+
 </body>
-</html>
+</html> 

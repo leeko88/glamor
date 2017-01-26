@@ -1,10 +1,16 @@
- <div id="main-sidebar" class="sidebar sidebar-inverse">
+<div id="main-sidebar" class="sidebar sidebar-inverse">
             <div class="sidebar-item">
                 <div class="media profile">
-                    <div class="media-thumb media-left thumb-bordereb"> <a class="img-shadow" href="javascript:void(0);"><img class="thumb" src="../../../../../images/glamor-software/perfil/avatar9604.jpg"></a> </div>
+                    <form id="formularioImage" method="post" enctype="multipart/form-data" action="../../../php/controllers/upload.php">
+                        <input style="display:none" type="file" id="imageUpload" name="imageUpload" />
+                    </form>
+                    <div class="media-thumb media-left thumb-bordereb">                    
+                    <a href="javascript:void(0)" class="img-shadow" id="imagePerfil"><img class="thumb" src="<?php echo $imagem; ?>"></a>&nbsp;
+                    <a id="refresh" style="display:none; font-size:10px;" href="">Aplicar</a>
+                    </div>
                     <div class="media-body">
-                        <h5 class="media-heading">Twitter Bootstrap <small>as Administrator</small></h5>
-                        <p class="data">Last Access: 16 May 15:30</p>
+                        <h5 class="media-heading"><?php echo $usuario?><small>Administrator</small></h5>
+                        <p class="data"><?php echo $empresa; ?></p>
                     </div>
                 </div>
             </div>
@@ -12,13 +18,13 @@
             
             <ul id="mainSideMenu" class="nav nav-list nav-side">
                 <li class="accordion-group">
-                    <div class="accordion-heading"> <a href="../../index.html"  class="accordion-toggle"> <span class="item-icon fontello-icon-monitor"></span> <i class="chevron fontello-icon-right-open-3"></i> Notificação </a> </div>
+                    <div class="accordion-heading active"> <a href="index.php" data-parent="#mainSideMenu" data-toggle="collapse" class="accordion-toggle"> <span class="item-icon fontello-icon-monitor"></span> <i class="chevron fontello-icon-right-open-3"></i> Notificação </a> </div>
                 </li>
                 <!-- // item accordionMenu Dashboard -->
                 <li class="accordion-group">
-                    <div class="accordion-heading active"> <a href="#accForms" data-parent="#mainSideMenu" data-toggle="collapse" class="accordion-toggle"> <span class="item-icon aweso-icon-list-alt"></span><i class="chevron fontello-icon-right-open-3"></i> Cadastro </a> </div>
-                    <ul class="accordion-content nav nav-list collapse in" id="accForms">
-                        <li class="active"> <a href="../cadastro/cadastro-cliente.php"> <i class="fontello-icon-right-dir"></i> Cadastro de clientes </a> </li>
+                    <div class="accordion-heading"> <a href="#accForms" data-parent="#mainSideMenu" data-toggle="collapse" class="accordion-toggle"> <span class="item-icon aweso-icon-list-alt"></span><i class="chevron fontello-icon-right-open-3"></i> Cadastro </a> </div>
+                    <ul class="accordion-content nav nav-list collapse" id="accForms">
+                        <li> <a href="../cadastro/cadastro-cliente.php"> <i class="fontello-icon-right-dir"></i> Cadastro de clientes </a> </li>
                         <li> <a href="component-form-elements.html"> <i class="fontello-icon-right-dir"></i> Form Element </a> </li>
                         <li> <a href="component-form-extension.html"> <i class="fontello-icon-right-dir"></i> Form Extension</a> </li>
                         <li> <a href="component-form-wizard.html"> <i class="fontello-icon-right-dir"></i> Form Wizard</a> </li>

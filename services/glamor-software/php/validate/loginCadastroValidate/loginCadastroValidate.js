@@ -130,7 +130,7 @@ $('#idButtonCad').click(function(){
                 $('#idMessageForm').removeClass( 'hide alert-success' );
                 $('#idMessageForm').addClass( 'alert-error' );
                 $('#idMessageForm').append('<strong style="color: red">Atenção!</strong> Não foi possivel fazer o cadastro.'+ 
-                'O Id da empresa talves não exista ou email já cadastrado. Caso o erro continue entre em <a href="http://localhost/pluton/#contact">contato</a>');
+                'O Id da empresa talvez não exista ou email já cadastrado. Caso o erro continue entre em <a href="http://localhost/pluton/#contact">contato</a>');
             }
         });
     }
