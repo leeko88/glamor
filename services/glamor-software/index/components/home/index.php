@@ -478,6 +478,8 @@ require_once('../comuns/session.php');
 </div>
 <!-- // page-container  --> 
 
+<script src="../../../../../js/glamor-software/dashboard.js"></script>
+
 <!-- javascripts comuns --> 
 <?php include_once '../comuns/javascript.html';?>
 <!-- End javascript comuns -->
