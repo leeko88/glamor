@@ -476,9 +476,10 @@ require_once('../comuns/session.php');
     <!-- // END footer-fix  --> 
     
 </div>
-<!-- // page-container  --> 
 
+<!-- // page-container 
 <script src="../../../../../js/glamor-software/dashboard.js"></script>
+ --> 
 
 <!-- javascripts comuns --> 
 <?php include_once '../comuns/javascript.html';?>
@@ -486,6 +487,13 @@ require_once('../comuns/session.php');
 
 <!-- Only This Page --> 
 <script src="../../../../../js/glamor-software/chartIndex.js"></script>
+
+<script>
+    $(function($) {	    
+    $('#notificacao').addClass('active');
+    $('#cadastro').removeClass('active');
+});
+</script>
 
 </body>
 </html>

@@ -35,14 +35,13 @@ require_once('../comuns/session.php');
      <!-- // END sidebar -->
         
         <div id="main-content" class="main-content container-fluid">
-            <div class="row-fluid page-head">
-                <h2 class="page-title"><i class="aweso-icon-list-alt"></i> Cadastro <small>Cadastro de clientes</small></h2>
-                <p class="pagedesc">Utilize as abas para outras opções. </p>
+            <div style="text-align:center;" class="row-fluid page-head">
+                <h2 class="page-title"><i class="aweso-icon-list-alt"></i> Clientes</h2>
                 <div class="page-bar">
                     <div class="btn-toolbar">
-                        <ul class="nav nav-tabs pull-right">
+                        <ul class="nav nav-tabs pull-left">
                             <li class="active" id="user-tab"> <a href="#TabTop1" data-toggle="tab">Cadastro de cliente</a> </li>
-                            <li id="articles-tab"> <a href="#TabTop2" data-toggle="tab">Articles</a> </li>
+                            <li id="articles-tab"> <a href="#TabTop2" data-toggle="tab">Listar Clientes</a> </li>
                             <!--<li id="wizard-tab"> <a href="#TabTop3" data-toggle="tab">Wizard</a> </li> -->
                         </ul>
                     </div>
@@ -53,19 +52,19 @@ require_once('../comuns/session.php');
             <div id="page-content" class="page-content tab-content overflow-y">
                 <div id="TabTop1" class="tab-pane padding-bottom30 active fade in">
                     <div class="page-header">
-                        <h3><i class="aweso-icon-list-alt opaci35"></i> Formulario <small>Cadastro de clientes.</small></h3>
+                        <h3><i class="aweso-icon-list-alt opaci35"></i> Formulario <small>Clientes.</small></h3>
                     </div>
                     <div class="row-fluid">
                         <div class="span8 grider">
                             <div class="widget widget-simple">
                                 <div class="widget-header">
-                                    <h4><i class="fontello-icon-user"></i> Forumlario de conta <small>novo usuario</small></h4>
+                                    <h4><i class="fontello-icon-user"></i>Novo usuario</h4>
                                 </div>
                                 <div class="widget-content">
                                     <div class="widget-body">
 
-                                        <!-- INICIO DO FORM -->
-                                        <form id="accounForm" class="form-horizontal" method="" action="" >
+                                        <!-- INICIO DO FORM CADASTRO CLIENTE-->
+                                        <form id="accounForm" class="form-horizontal" >
                                             <div class="row-fluid">
                                                 <div class="span12 form-dark">
                                                     <fieldset>
@@ -81,24 +80,15 @@ require_once('../comuns/session.php');
                                                                     <input id="accountFirstName" class="span11" type="text" name="accountFirstName" value="">
                                                                 </div>
                                                             </li>
+
                                                             <!-- // form item -->
-                                                            
-                                                            <li class="control-group">
-                                                                <label for="accountGender" class="control-label">Genero <span class="required">*</span></label>
-                                                                <div class="controls">
-                                                                    <input id="accountGenderInput" type="hidden" name="accountGender" value="" />
-                                                                    <div id="accountGender" class="btn-group change" data-toggle="buttons-radio" data-target="accountGenderInput">
-                                                                        <button type="button" class="btn" class-toggle="btn-green" name="accountGender" value="male">&nbsp; Masculino &nbsp;</button>
-                                                                        <button type="button" class="btn" class-toggle="btn-green" name="accountGender" value="female">Feminino</button>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
+                                                            <!--genero -->
                                                             <!-- // form item -->
                                                             
                                                             <li class="control-group">
                                                                 <label for="accountDob" class="control-label">Data de nascimento <span class="required">*</span></label>
                                                                 <div class="controls">
-                                                                    <input id="accountDob" class="span6" type="text" name="accountDob" locate="pt-BR" value="">
+                                                                    <input id="accountDob" class="span6" type="text" name="accountDob" locate="pt-BR" value="" placeholder="00-00-0000">
                                                                 </div>
                                                             </li>
                                                             <!-- // form item -->
@@ -115,17 +105,20 @@ require_once('../comuns/session.php');
                                                                         <input id="accountEmail" class="span6" type="text" name="accountEmail" value="">
                                                                 </div>
                                                             </li>
+
+                                                            <li class="control-group">
+                                                                <label for="accountPassword" class="control-label">Senha <span class="required">*</span></label>
+                                                                <div class="controls">
+                                                                    <div class="input-append block">
+                                                                        <input id="accountPassword" class="span6" type="password" name="accountPassword" value="">
+                                                                </div>
+                                                            </li>
                                                             <!-- // form item -->
                                                             
                                                             <li class="control-group">
                                                                 <label for="accountPhoneNumber" class="control-label">Celular <span class="required">*</span></label>
                                                                 <div class="controls controls-row">
                                                                     <input id="accountPhoneNumber" class="span6 maskPhone margin-right5" type="text" name="accountPhoneNumber" value="">
-                                                                    <select id="accountPhoneType" class="selectpicker" data-style="btn-info" name="accountPhoneType">
-                                                                        <option value="1">Particular</option>
-                                                                        <option value="2">Trabalho</option>
-                                                                        <option value="3">Outro</option>
-                                                                    </select>
                                                                 </div>
                                                             </li>
                                                             <!-- // form item -->
@@ -134,317 +127,14 @@ require_once('../comuns/session.php');
                                                                 <label for="accountFaxNumber" class="control-label">Fixo</label>
                                                                 <div class="controls controls-row">
                                                                     <input id="accountFaxNumber" class="span6 maskPhoneFixo margin-right5" type="text" name="accountFaxNumber" value="">
-                                                                    <select id="accountFaxType" class="selectpicker" data-style="btn-info" name="accountFaxType">
-                                                                        <option value="1">Particular</option>
-                                                                        <option value="2">Trabalho</option>
-                                                                        <option value="3">Outro</option>
-                                                                    </select>
                                                             </li>
                                                             <!-- // form item -->
                                                             
-                                                        </ul>
-                                                    </fieldset>
-                                                    <fieldset>
-                                                        <legend class="section-form">Endereço </legend>
-                                                        <ul class="form-list label-left list-bordered dotted">
-                                                            <li class="control-group">
-                                                                <label for="accountAddressStreet" class="control-label">Endereço <span class="required">*</span></label>
-                                                                <div class="controls controls-row">
-                                                                    <input id="accountAddressStreet" class="span6 margin-right5" type="text" value="" name="accountAddressStreet">
-                                                                    <select id="accountAddressDestinationType" class="selectpicker" data-style="btn-info" name="accountAddressType">
-                                                                        <option value="1">Particular</option>
-                                                                        <option value="2">Trabalho</option>
-                                                                        <option value="3">Outro</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="controls margin-s0">
-                                                                    <input id="accountAddressDestination" class="span6" type="text" placeholder="Bairro" name="accountAddressDestination">
-                                                                </div>
-                                                            </li>
-                                                            <!-- // form item -->
-                                                            
-                                                            <li class="control-group">
-                                                                <label for="accountAddressCity" class="control-label">Cidade <span class="required">*</span></label>
-                                                                <div class="controls">
-                                                                    <input id="accountAddressCity" class="span6" type="text" value="" name="accountAddressCity">
-                                                                </div>
-                                                            </li>
-                                                            <!-- // form item -->
-                                                            
-                                                            <li class="control-group">
-                                                                <label for="accountAddressState" class="control-label">State <span class="required">*</span></label>
-                                                                <div class="controls">
-                                                                    <input id="accountAddressState" class="span6" type="text" value="" name="accountAddressState">
-                                                                    
-                                                                </div>
-                                                            </li>
-                                                            <!-- // form item -->
-                                                            
-                                                            <li class="control-group">
-                                                                <label for="accountAddressZip" class="control-label">Zip / Postal code <span class="required">*</span></label>
-                                                                <div class="controls">
-                                                                    <input id="accountAddressZip" class="span6 maskZipcode" type="text" value="" name="accountAddressZip">
-                                                                </div>
-                                                            </li>
-                                                            <!-- // form item -->
-                                                            
-                                                            <li class="control-group">
-                                                                <label for="accountAddressCountry" class="control-label">Country <span class="required">*</span></label>
-                                                                <div class="controls">
-                                                                    <input id="accountAddressCountryData" type="hidden" value="" name="accountAddressCountry">
-                                                                    <select id="accountAddressCountry" class="span6" name="accountAddressCountry">
-                                                                        <option value=""></option>
-                                                                        <option value="United States">United States</option>
-                                                                        <option value="United Kingdom">United Kingdom</option>
-                                                                        <option value="Afghanistan">Afghanistan</option>
-                                                                        <option value="Albania">Albania</option>
-                                                                        <option value="Algeria">Algeria</option>
-                                                                        <option value="American Samoa">American Samoa</option>
-                                                                        <option value="Andorra">Andorra</option>
-                                                                        <option value="Angola">Angola</option>
-                                                                        <option value="Anguilla">Anguilla</option>
-                                                                        <option value="Antarctica">Antarctica</option>
-                                                                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                                                        <option value="Argentina">Argentina</option>
-                                                                        <option value="Armenia">Armenia</option>
-                                                                        <option value="Aruba">Aruba</option>
-                                                                        <option value="Australia">Australia</option>
-                                                                        <option value="Austria">Austria</option>
-                                                                        <option value="Azerbaijan">Azerbaijan</option>
-                                                                        <option value="Bahamas">Bahamas</option>
-                                                                        <option value="Bahrain">Bahrain</option>
-                                                                        <option value="Bangladesh">Bangladesh</option>
-                                                                        <option value="Barbados">Barbados</option>
-                                                                        <option value="Belarus">Belarus</option>
-                                                                        <option value="Belgium">Belgium</option>
-                                                                        <option value="Belize">Belize</option>
-                                                                        <option value="Benin">Benin</option>
-                                                                        <option value="Bermuda">Bermuda</option>
-                                                                        <option value="Bhutan">Bhutan</option>
-                                                                        <option value="Bolivia">Bolivia</option>
-                                                                        <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                                                                        <option value="Botswana">Botswana</option>
-                                                                        <option value="Bouvet Island">Bouvet Island</option>
-                                                                        <option value="Brazil">Brazil</option>
-                                                                        <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
-                                                                        <option value="Brunei Darussalam">Brunei Darussalam</option>
-                                                                        <option value="Bulgaria">Bulgaria</option>
-                                                                        <option value="Burkina Faso">Burkina Faso</option>
-                                                                        <option value="Burundi">Burundi</option>
-                                                                        <option value="Cambodia">Cambodia</option>
-                                                                        <option value="Cameroon">Cameroon</option>
-                                                                        <option value="Canada">Canada</option>
-                                                                        <option value="Cape Verde">Cape Verde</option>
-                                                                        <option value="Cayman Islands">Cayman Islands</option>
-                                                                        <option value="Central African Republic">Central African Republic</option>
-                                                                        <option value="Chad">Chad</option>
-                                                                        <option value="Chile">Chile</option>
-                                                                        <option value="China">China</option>
-                                                                        <option value="Christmas Island">Christmas Island</option>
-                                                                        <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
-                                                                        <option value="Colombia">Colombia</option>
-                                                                        <option value="Comoros">Comoros</option>
-                                                                        <option value="Congo">Congo</option>
-                                                                        <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
-                                                                        <option value="Cook Islands">Cook Islands</option>
-                                                                        <option value="Costa Rica">Costa Rica</option>
-                                                                        <option value="Cote D'ivoire">Cote D'ivoire</option>
-                                                                        <option value="Croatia">Croatia</option>
-                                                                        <option value="Cuba">Cuba</option>
-                                                                        <option value="Cyprus">Cyprus</option>
-                                                                        <option value="Czech Republic">Czech Republic</option>
-                                                                        <option value="Denmark">Denmark</option>
-                                                                        <option value="Djibouti">Djibouti</option>
-                                                                        <option value="Dominica">Dominica</option>
-                                                                        <option value="Dominican Republic">Dominican Republic</option>
-                                                                        <option value="Ecuador">Ecuador</option>
-                                                                        <option value="Egypt">Egypt</option>
-                                                                        <option value="El Salvador">El Salvador</option>
-                                                                        <option value="Equatorial Guinea">Equatorial Guinea</option>
-                                                                        <option value="Eritrea">Eritrea</option>
-                                                                        <option value="Estonia">Estonia</option>
-                                                                        <option value="Ethiopia">Ethiopia</option>
-                                                                        <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
-                                                                        <option value="Faroe Islands">Faroe Islands</option>
-                                                                        <option value="Fiji">Fiji</option>
-                                                                        <option value="Finland">Finland</option>
-                                                                        <option value="France">France</option>
-                                                                        <option value="French Guiana">French Guiana</option>
-                                                                        <option value="French Polynesia">French Polynesia</option>
-                                                                        <option value="French Southern Territories">French Southern Territories</option>
-                                                                        <option value="Gabon">Gabon</option>
-                                                                        <option value="Gambia">Gambia</option>
-                                                                        <option value="Georgia">Georgia</option>
-                                                                        <option value="Germany">Germany</option>
-                                                                        <option value="Ghana">Ghana</option>
-                                                                        <option value="Gibraltar">Gibraltar</option>
-                                                                        <option value="Greece">Greece</option>
-                                                                        <option value="Greenland">Greenland</option>
-                                                                        <option value="Grenada">Grenada</option>
-                                                                        <option value="Guadeloupe">Guadeloupe</option>
-                                                                        <option value="Guam">Guam</option>
-                                                                        <option value="Guatemala">Guatemala</option>
-                                                                        <option value="Guinea">Guinea</option>
-                                                                        <option value="Guinea-bissau">Guinea-bissau</option>
-                                                                        <option value="Guyana">Guyana</option>
-                                                                        <option value="Haiti">Haiti</option>
-                                                                        <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
-                                                                        <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
-                                                                        <option value="Honduras">Honduras</option>
-                                                                        <option value="Hong Kong">Hong Kong</option>
-                                                                        <option value="Hungary">Hungary</option>
-                                                                        <option value="Iceland">Iceland</option>
-                                                                        <option value="India">India</option>
-                                                                        <option value="Indonesia">Indonesia</option>
-                                                                        <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
-                                                                        <option value="Iraq">Iraq</option>
-                                                                        <option value="Ireland">Ireland</option>
-                                                                        <option value="Israel">Israel</option>
-                                                                        <option value="Italy">Italy</option>
-                                                                        <option value="Jamaica">Jamaica</option>
-                                                                        <option value="Japan">Japan</option>
-                                                                        <option value="Jordan">Jordan</option>
-                                                                        <option value="Kazakhstan">Kazakhstan</option>
-                                                                        <option value="Kenya">Kenya</option>
-                                                                        <option value="Kiribati">Kiribati</option>
-                                                                        <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
-                                                                        <option value="Korea, Republic of">Korea, Republic of</option>
-                                                                        <option value="Kuwait">Kuwait</option>
-                                                                        <option value="Kyrgyzstan">Kyrgyzstan</option>
-                                                                        <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
-                                                                        <option value="Latvia">Latvia</option>
-                                                                        <option value="Lebanon">Lebanon</option>
-                                                                        <option value="Lesotho">Lesotho</option>
-                                                                        <option value="Liberia">Liberia</option>
-                                                                        <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
-                                                                        <option value="Liechtenstein">Liechtenstein</option>
-                                                                        <option value="Lithuania">Lithuania</option>
-                                                                        <option value="Luxembourg">Luxembourg</option>
-                                                                        <option value="Macao">Macao</option>
-                                                                        <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
-                                                                        <option value="Madagascar">Madagascar</option>
-                                                                        <option value="Malawi">Malawi</option>
-                                                                        <option value="Malaysia">Malaysia</option>
-                                                                        <option value="Maldives">Maldives</option>
-                                                                        <option value="Mali">Mali</option>
-                                                                        <option value="Malta">Malta</option>
-                                                                        <option value="Marshall Islands">Marshall Islands</option>
-                                                                        <option value="Martinique">Martinique</option>
-                                                                        <option value="Mauritania">Mauritania</option>
-                                                                        <option value="Mauritius">Mauritius</option>
-                                                                        <option value="Mayotte">Mayotte</option>
-                                                                        <option value="Mexico">Mexico</option>
-                                                                        <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
-                                                                        <option value="Moldova, Republic of">Moldova, Republic of</option>
-                                                                        <option value="Monaco">Monaco</option>
-                                                                        <option value="Mongolia">Mongolia</option>
-                                                                        <option value="Montserrat">Montserrat</option>
-                                                                        <option value="Morocco">Morocco</option>
-                                                                        <option value="Mozambique">Mozambique</option>
-                                                                        <option value="Myanmar">Myanmar</option>
-                                                                        <option value="Namibia">Namibia</option>
-                                                                        <option value="Nauru">Nauru</option>
-                                                                        <option value="Nepal">Nepal</option>
-                                                                        <option value="Netherlands">Netherlands</option>
-                                                                        <option value="Netherlands Antilles">Netherlands Antilles</option>
-                                                                        <option value="New Caledonia">New Caledonia</option>
-                                                                        <option value="New Zealand">New Zealand</option>
-                                                                        <option value="Nicaragua">Nicaragua</option>
-                                                                        <option value="Niger">Niger</option>
-                                                                        <option value="Nigeria">Nigeria</option>
-                                                                        <option value="Niue">Niue</option>
-                                                                        <option value="Norfolk Island">Norfolk Island</option>
-                                                                        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-                                                                        <option value="Norway">Norway</option>
-                                                                        <option value="Oman">Oman</option>
-                                                                        <option value="Pakistan">Pakistan</option>
-                                                                        <option value="Palau">Palau</option>
-                                                                        <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
-                                                                        <option value="Panama">Panama</option>
-                                                                        <option value="Papua New Guinea">Papua New Guinea</option>
-                                                                        <option value="Paraguay">Paraguay</option>
-                                                                        <option value="Peru">Peru</option>
-                                                                        <option value="Philippines">Philippines</option>
-                                                                        <option value="Pitcairn">Pitcairn</option>
-                                                                        <option value="Poland">Poland</option>
-                                                                        <option value="Portugal">Portugal</option>
-                                                                        <option value="Puerto Rico">Puerto Rico</option>
-                                                                        <option value="Qatar">Qatar</option>
-                                                                        <option value="Reunion">Reunion</option>
-                                                                        <option value="Romania">Romania</option>
-                                                                        <option value="Russian Federation">Russian Federation</option>
-                                                                        <option value="Rwanda">Rwanda</option>
-                                                                        <option value="Saint Helena">Saint Helena</option>
-                                                                        <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
-                                                                        <option value="Saint Lucia">Saint Lucia</option>
-                                                                        <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
-                                                                        <option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
-                                                                        <option value="Samoa">Samoa</option>
-                                                                        <option value="San Marino">San Marino</option>
-                                                                        <option value="Sao Tome and Principe">Sao Tome and Principe</option>
-                                                                        <option value="Saudi Arabia">Saudi Arabia</option>
-                                                                        <option value="Senegal">Senegal</option>
-                                                                        <option value="Serbia and Montenegro">Serbia and Montenegro</option>
-                                                                        <option value="Seychelles">Seychelles</option>
-                                                                        <option value="Sierra Leone">Sierra Leone</option>
-                                                                        <option value="Singapore">Singapore</option>
-                                                                        <option value="Slovakia">Slovakia</option>
-                                                                        <option value="Slovenia">Slovenia</option>
-                                                                        <option value="Solomon Islands">Solomon Islands</option>
-                                                                        <option value="Somalia">Somalia</option>
-                                                                        <option value="South Africa">South Africa</option>
-                                                                        <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
-                                                                        <option value="Spain">Spain</option>
-                                                                        <option value="Sri Lanka">Sri Lanka</option>
-                                                                        <option value="Sudan">Sudan</option>
-                                                                        <option value="Suriname">Suriname</option>
-                                                                        <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
-                                                                        <option value="Swaziland">Swaziland</option>
-                                                                        <option value="Sweden">Sweden</option>
-                                                                        <option value="Switzerland">Switzerland</option>
-                                                                        <option value="Syrian Arab Republic">Syrian Arab Republic</option>
-                                                                        <option value="Taiwan, Province of China">Taiwan, Province of China</option>
-                                                                        <option value="Tajikistan">Tajikistan</option>
-                                                                        <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
-                                                                        <option value="Thailand">Thailand</option>
-                                                                        <option value="Timor-leste">Timor-leste</option>
-                                                                        <option value="Togo">Togo</option>
-                                                                        <option value="Tokelau">Tokelau</option>
-                                                                        <option value="Tonga">Tonga</option>
-                                                                        <option value="Trinidad and Tobago">Trinidad and Tobago</option>
-                                                                        <option value="Tunisia">Tunisia</option>
-                                                                        <option value="Turkey">Turkey</option>
-                                                                        <option value="Turkmenistan">Turkmenistan</option>
-                                                                        <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
-                                                                        <option value="Tuvalu">Tuvalu</option>
-                                                                        <option value="Uganda">Uganda</option>
-                                                                        <option value="Ukraine">Ukraine</option>
-                                                                        <option value="United Arab Emirates">United Arab Emirates</option>
-                                                                        <option value="United Kingdom">United Kingdom</option>
-                                                                        <option value="United States">United States</option>
-                                                                        <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
-                                                                        <option value="Uruguay">Uruguay</option>
-                                                                        <option value="Uzbekistan">Uzbekistan</option>
-                                                                        <option value="Vanuatu">Vanuatu</option>
-                                                                        <option value="Venezuela">Venezuela</option>
-                                                                        <option value="Viet Nam">Viet Nam</option>
-                                                                        <option value="Virgin Islands, British">Virgin Islands, British</option>
-                                                                        <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
-                                                                        <option value="Wallis and Futuna">Wallis and Futuna</option>
-                                                                        <option value="Western Sahara">Western Sahara</option>
-                                                                        <option value="Yemen">Yemen</option>
-                                                                        <option value="Zambia">Zambia</option>
-                                                                        <option value="Zimbabwe">Zimbabwe</option>
-                                                                    </select>
-                                                                </div>
-                                                            </li>
-                                                            <!-- // form item -->
                                                         </ul>
                                                     </fieldset>
                                                     <!-- // fieldset Input -->
                                                     <div class="form-actions">
-                                                        <button type="submit" class="btn btn-blue">Submit & Validate</button>
-                                                        <button class="btn cancel">Cancel</button>
+                                                        <button class="btn btn-blue">Submit & Validate</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -456,114 +146,6 @@ require_once('../comuns/session.php');
                             
                         </div>
                         <!-- // Column -->
-                        
-                        <div class="span4 grider">
-                            <div class="widget widget-simple widget-notes">
-                                <div class="widget-header">
-                                    <h4><i class="fontello-icon-edit"></i> Notes</h4>
-                                    <div class="widget-tool"><a class="btn btn-green btn-small btn-glyph" href="javascript:void(0);"> show all</a></div>
-                                </div>
-                                <div class="widget-content">
-                                    <div class="widget-body">
-                                        <form id="formNotes" class="form-dark">
-                                            <fieldset>
-                                                <label for="accountTaxVat" class="control-label"> Title</label>
-                                                <input id="accountTaxVat" class="input-block-level" type="text">
-                                                <label for="accountNotes">Note Text:</label>
-                                                <textarea id="accountNotes" class="input-block-level" rows="4"></textarea>
-                                            </fieldset>
-                                            <!-- // fieldset Input -->
-                                            
-                                            <button class="btn btn-yellow btn-block">Add a note</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="widget-header">
-                                    <h4><i class="fontello-icon-list-alt"></i> Last Note for Account </h4>
-                                </div>
-                                <div class="widget-content">
-                                    <div class="widget-body">
-                                        <ol class="widget-list list-dotted">
-                                            <li class="media"> <span class="pull-left"><span class="item-icon fontello-icon-pin-1"></span></span>
-                                                <div class="media-body"> <span class="date">10:30 AM</span> <span class="quick-menu-icon pull-right"> <a class="edit fontello-icon-edit"></a> <a class="state fontello-icon-archive"></a> <a class="state fontello-icon-trash-1"></a> </span>
-                                                    <p class="note">Pellentesque malesuada nulla nunc nunc facilisi Donec tellus nec Donec et. Pellentesque metus dolor neque consequat scelerisque.</p>
-                                                </div>
-                                            </li>
-                                            <li class="media"> <span class="pull-left"><span class="item-icon fontello-icon-pin-1"></span></span>
-                                                <div class="media-body"> <span class="date">09-09-2012 02:30 PM</span> <span class="quick-menu-icon pull-right"> <a class="edit fontello-icon-edit"></a> <a class="state fontello-icon-archive"></a> <a class="state fontello-icon-trash-1"></a> </span>
-                                                    <p class="note">Pellentesque malesuada nulla nunc nunc facilisi Donec tellus nec Donec et. Pellentesque metus dolor neque consequat scelerisque.</p>
-                                                </div>
-                                            </li>
-                                            <li class="media"> <span class="pull-left"><span class="item-icon fontello-icon-pin-1"></span></span>
-                                                <div class="media-body"> <span class="date">08-15-2012 11:50 AM</span> <span class="quick-menu-icon pull-right"> <a class="edit fontello-icon-edit"></a> <a class="state fontello-icon-archive"></a> <a class="state fontello-icon-trash-1"></a> </span>
-                                                    <p class="note">Pellentesque malesuada nulla nunc nunc facilisi Donec tellus nec Donec et. Pellentesque metus dolor neque consequat scelerisque.</p>
-                                                </div>
-                                            </li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- // Widget -->
-                            
-                            <div class="widget widget-simple">
-                                <div class="widget-header">
-                                    <h4><i class="fontello-icon-wrench-2"></i> Next setting for Account </h4>
-                                </div>
-                                <div class="widget-content">
-                                    <div class="widget-body">
-                                        <form id="formNextAccountSettings" class="form-condensed">
-                                            <fieldset>
-                                                <ul class="form-list">
-                                                    <li class="control-group">
-                                                        <label for="accountForce" class="control-label">Force account - select date (from - to)</label>
-                                                        <div class="controls">
-                                                            <input id="accountForce" class="input-block-level margin-00" type="text" name="accountForce" value="">
-                                                            <span class="help-block">Bootstrap daterangepicker</span> </div>
-                                                    </li>
-                                                    <!-- // form item -->
-                                                    
-                                                    <li class="control-group">
-                                                        <label for="accountWebsite_id" class="control-label">Associate to Website</label>
-                                                        <div class="controls">
-                                                            <select id="accountWebsite_id" class="selecttwo-full" name="account[website_id]">
-                                                                <option value="">Please Select</option>
-                                                                <option selected="selected" value="0">Admin</option>
-                                                                <option value="1">Main Website</option>
-                                                            </select>
-                                                        </div>
-                                                    </li>
-                                                    <!-- // form item -->
-                                                    
-                                                    <li class="control-group">
-                                                        <label for="accountCreated_in" class="control-label">Created From</label>
-                                                        <div class="controls">
-                                                            <input id="accountCreated_in" class="input-block-level" type="text" name="account[created_in]" value="Admin" disabled="disabled">
-                                                        </div>
-                                                    </li>
-                                                    <!-- // form item -->
-                                                    
-                                                    <li class="control-group">
-                                                        <label for="accountGroup" class="control-label">Customer Group</label>
-                                                        <div class="controls">
-                                                            <input id="accountGroup" class="" type="text" name="accountGroup" />
-                                                            <label for="disableGroup_change" class="checkbox margin-top5">
-                                                                <input id="disableGroup_change" class="checkbox" type="checkbox" value="1" name="account[disableGroup_change]">
-                                                                Disable Automatic Group Change</label>
-                                                        </div>
-                                                    </li>
-                                                    <!-- // form item -->
-                                                    
-                                                </ul>
-                                            </fieldset>
-                                            <!-- // fieldset Input -->
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- // Widget --> 
-                            
-                        </div>
-                        <!-- // Column --> 
                         
                     </div>
                     <!-- // Example row --> 
@@ -1036,9 +618,17 @@ require_once('../comuns/session.php');
 <!-- End javascript comuns -->
 
 <!-- javascript da pagina -->
-<script src="../../../../../js/glamor-software/form.js"></script> 
 <script src="../../../../../js/bootstrap/bootstrap-wysihtml5/wysihtml5.js"></script>
+<script src="../../../php/validate/cadastroClienteValidate/cadastroClienteValidate.js"></script>
 <!-- end javascript -->
+
+<!-- retira o active dos menus e adiciona nele -->
+<script>
+$(function($) {	    
+    $('#cadastro').addClass('active');
+    $('#notificacao').removeClass('active');
+});
+</script>
 
 </body>
 </html> 

@@ -49,7 +49,7 @@
 		});
 		
 		// FORM - SELECT 2
-        // ------------------------------------------------------------------------------------------------ * -->
+        /* ------------------------------------------------------------------------------------------------ 
         // select2 demo
 		$(".selecttwo").select2({
                 minimumResultsForSearch: 6,
@@ -151,7 +151,7 @@
                 tags: ["one", "two", "three"],
                 placeholder: "Select or Enter tag"
         });
-
+*/
         // FORM - UNIFORM PLUGIN 
         // ------------------------------------------------------------------------------------------------ * -->
         $("input.checkbox, input.radio, input:file.input-file").uniform({
@@ -163,7 +163,12 @@
         $("input.maskDate").inputmask("99/99/9999", {
                 placeholder: "dd/mm/yyyy"
         });
-        $("input.maskPhone").inputmask("(999) 999-9999", {
+        $("input.maskPhone").inputmask("(99) 9.9999-9999", {
+                completed: function () {
+                        alert("Callback when completed");
+                }
+        });
+         $("input.maskPhoneFixo").inputmask("(99) 9999-9999", {
                 completed: function () {
                         alert("Callback when completed");
                 }
