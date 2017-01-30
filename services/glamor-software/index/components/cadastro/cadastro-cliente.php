@@ -64,7 +64,7 @@ require_once('../comuns/session.php');
                                     <div class="widget-body">
 
                                         <!-- INICIO DO FORM CADASTRO CLIENTE-->
-                                        <form id="accounForm" class="form-horizontal" >
+                                        <form id="accounForm" class="form-horizontal" method="post" action="../../../php/validate/cadastroClienteValidate/cadastroClienteValidate.php" >
                                             <div class="row-fluid">
                                                 <div class="span12 form-dark">
                                                     <fieldset>
@@ -129,12 +129,11 @@ require_once('../comuns/session.php');
                                                                     <input id="accountFaxNumber" class="span6 maskPhoneFixo margin-right5" type="text" name="accountFaxNumber" value="">
                                                             </li>
                                                             <!-- // form item -->
-                                                            
                                                         </ul>
                                                     </fieldset>
                                                     <!-- // fieldset Input -->
                                                     <div class="form-actions">
-                                                        <button class="btn btn-blue">Submit & Validate</button>
+                                                        <button id="btn-cadCli" class="btn btn-blue">Enviar & Validar</button>
                                                     </div>
                                                 </div>
                                             </div>

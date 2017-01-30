@@ -37,6 +37,7 @@ $_SESSION['logged_in'] = true;
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['user_name'] = $user['nome'];
 $_SESSION['user_emp'] = $user['emp_fantasia'];
+$_SESSION['user_bd'] = 'glamor_emp_'.$user['id'];
 
 $PDO = NULL;
 return true;
