@@ -8,32 +8,27 @@
     if(isset($_POST['accountFirstName']) &&
     isset($_POST['accountDob']) &&
     isset($_POST['accountEmail']) &&
-    isset($_POST['accountPassword']) &&
+    isset($_POST['accountSenha']) &&
     isset($_POST['accountPhoneNumber'])){
+        
         $resultadoDaValidacao = true;
+        $telefoneFixo = $_POST['accountFaxNumber'];
+
             //Validando telefone celular
         if(strlen(str_replace('_', '', $_POST['accountPhoneNumber']).trim()) < 16){//verificar se ta no formato e tamanho certo.
             $resultadoDaValidacao = false;
-            echo 'Formatação do celular errado';
-        }elseif(strlen(str_replace('_', '', $_POST['accountFaxNumber'].trim()))>0){//Se o telefone fixo for preenchido
-            if(strlen(str_replace('_', '', $_POST['accountFaxNumber'].trim())) < 14){//verificar se ele ta no formato e tamanho certo.
-            $resultadoDaValidacao = false;
-            echo 'Formatação do telefone fixo Errado';
-            }
+        }elseif(strlen($_POST['accountFaxNumber']) == 0){//Se o telefone fixo não for preenchido
+            $telefoneFixo = null;
         }elseif(strlen($_POST['accountFirstName']) < 10 && strlen($_POST['accountFirstName']) > 45){//validando Nome
             $resultadoDaValidacao = false;
-            echo 'Tamanho do nome errado';
         }elseif(strlen($_POST['accountDob']) != 10){//validando Data NIver
             $resultadoDaValidacao = false;
-            echo 'Formataçao da data errada';
-        }elseif(strlen($_POST['accountPassword']) > 45 ){// Validando senha
+        }elseif(strlen($_POST['accountSenha']) > 45 ){// Validando senha
             $resultadoDaValidacao = false;
-            echo 'Tamanho da senha errada';
         }
         cadastrarCliente($resultadoDaValidacao);
     }else{
         $resultadoDaValidacao = false;
-        echo 'Nem todos os dados foram recebidos';
     }
 }
 
@@ -48,7 +43,8 @@ function cadastrarCliente($resultadoDaValidacao){
 
             //Se o email não existir pode cadastrar.
             if(!verificarEmail($_POST['accountEmail'], $bancoDeDados)){
-            echo false;
+            $menssagem .= "Email já cadastrado";
+            header("Location: ../../../index/components/cadastro/cadastro-cliente.php?resultado=alert-error&menssagem=$menssagem");
             $conn = null;
             exit;
             }
@@ -58,30 +54,26 @@ function cadastrarCliente($resultadoDaValidacao){
             VALUES (null, :nome, str_to_date(:nascimento, '%d/%m/%Y'), :celular, :telefone, :email, :password)");
 
             $sql->bindParam(':nome', $_POST['accountFirstName']);
-            echo $_POST['accountFirstName'];
             $sql->bindParam(':nascimento', str_replace('-','/',$_POST['accountDob']));
-            echo $_POST['accountDob'];
             $sql->bindParam(':celular', $_POST['accountPhoneNumber']);
-            echo $_POST['accountPhoneNumber'];
-            if(strlen(str_replace('_', '', $_POST['accountFaxNumber'].trim()))>0){
-            $sql->bindParam(':telefone', $_POST['accountFaxNumber']);
-            }else{
-            $sql->bindParam(':telefone', null);
-            }
             $sql->bindParam(':email', $_POST['accountEmail']);
-            echo $_POST['accountEmail'];
-            $sql->bindParam(':password', $_POST['accountPassword']);
-            echo $_POST['accountPassword'];
-            
+            $sql->bindParam(':password', $_POST['accountSenha']);
+            $sql->bindParam(':telefone', $telefoneFixo);
             $sql->execute();
 
-            echo 'Cadastro feito com sucesso!';
+            $menssagem .= 'Cadastro feito com sucesso!';
+            header("Location: ../../../index/components/cadastro/cadastro-cliente.php?resultado=alert-success&menssagem=$menssagem");
+
             }
         catch(PDOException $e)
             {
-            echo 'Erro no cadastro';
+            $menssagem .= 'Erro ao efetuar o cadastro!<br>Verifique os campos';
+            header("Location: ../../../index/components/cadastro/cadastro-cliente.php?resultado=alert-error&menssagem=$menssagem");
             }
             $conn = null;
+    }else{
+        $menssagem .= 'Erro ao efetuar o cadastro!<br>Verifique os campos';
+        header("Location: ../../../index/components/cadastro/cadastro-cliente.php?resultado=alert-error&menssagem=$menssagem");
     }
 }
 

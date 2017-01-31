@@ -27,7 +27,7 @@ $(document).ready(function ($) {
 										email: true,
 										maxlength: 45
 								},
-								accountPassword: {//Senha
+								accountSenha: {//Senha
 										required: true,
 										maxlength: 45
 								},
@@ -50,7 +50,7 @@ $(document).ready(function ($) {
 										email: "Digite um email valido - nome@exemplo.com",
 										maxlength: "Tamanho maximo é 45 caracteres"
 								},
-								accountPassword: {//Senha
+								accountSenha: {//Senha
 										required: "Digite a Senha",
 										maxlength: "Tamanho maximo é 45 caracteres"
 								},
@@ -75,3 +75,15 @@ $(document).ready(function ($) {
 				})
 		});
 });
+
+function sussessoNoCadastro(){
+	$('#divSucesso').removeClass( 'hide' );
+	$('#divSucesso').addClass( 'alert-success' );
+    $('#divSucesso').append('<strong style="color: red">Sucesso!</strong> Cadastro efetuado!');
+}
+
+function erroNoCadastro(){
+	$('#divSucesso').removeClass( 'hide' );
+	$('#divSucesso').addClass( 'alert-error' );
+    $('#divSucesso').append('<strong style="color: red">Erro!</strong> Não foi possivel gravar!');
+}
