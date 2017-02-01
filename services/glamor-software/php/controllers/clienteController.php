@@ -1,70 +1,90 @@
 <?php
-//Listar clientes
+session_start();
 
+//REMOVER CLIENTES
+if(isset($_GET['removeID'])){
+require_once('../connection/connection.php');
+   try{
+    $PDO = conexaoComBancoDeDados($_SESSION['user_bd']);
+    echo $_SESSION['user_bd'];
 
-//Valida o usuario e senha digitados
+    $sql = "DELETE FROM user_client WHERE id = '".$_GET['removeID']."'";
+    $stmt = $PDO->prepare($sql);
+
+    $stmt->execute();
+    $PDO = NULL;
+    header("Location: ../../index/components/cadastro/cadastro-cliente.php?removesucess=yes");
+    
+    }catch(PDOException $e){
+    $PDO = NULL;
+    header("Location: ../../index/components/cadastro/cadastro-cliente.php?removesucess=no");
+    }         
+}//END REMOVER CLIENTES
+
+//LISTAR CLIENTES
 function listarUsuario(){
-//solicita a conexao com o banco de dados do connection.php
-//atraves do seu metodo conexaoComBancoDeDados()
-$PDO = conexaoComBancoDeDados($_SESSION['user_bd']);
+    try{
+    $PDO = conexaoComBancoDeDados($_SESSION['user_bd']);
+         
+    $sql = "SELECT * , DATE_FORMAT(nascimento,'%d/%m/%Y') as aniversario FROM user_client";
+    $stmt = $PDO->prepare($sql);
 
-$sql = "SELECT * FROM user_client";
-$stmt = $PDO->prepare($sql);
-
-$stmt->execute();
- 
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
- 
-if (count($users) <= 0)
-{
-    echo 'Sem usuarios'; //Sem usuario
-    exit;
-}
- 
- echo  "<section>
-                    <div class='page-header'>
-                        <h3><i class='aweso-icon-table opaci35'></i> Injekt Toolbar <small>.btn-toolbar</small></h3>
-                        <p>base toolbar injekt in header, full pagination</p>
-                    </div>
-                    <div class='row-fluid'>
-                        <div class='span12'>
-                            <div class='widget widget-simple widget-table'>
-                                <table id='exampleDTB-1' class='table boo-table table-striped table-content table-hover'>
-                                    <thead>
-                                        <tr>
-                                            <th scope='col'>ID <span class='column-sorter'></span></th>
-                                            <th scope='col'>Name <span class='column-sorter'></span></th>
-                                            <th scope='col'>City <span class='column-sorter'></span></th>
-                                            <th scope='col'>Email <span class='column-sorter'></span></th>
-                                            <th scope='col'>Date of birth <span class='column-sorter'></span></th>
-                                        </tr>
-                                    </thead>";
+    $stmt->execute();
+    
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    echo   "<section style='margin-left:-13px;'>                    
+                        <div class='row-fluid'>
+                            <div class='span12'>
+                                <div class='widget widget-simple widget-table'>
+                                    <table id='exampleDTB-1' class='table boo-table table-striped table-content table-hover'>
+                                        <thead>
+                                            <tr>
+                                                <th scope='col'>ID <span class='column-sorter'></span></th>
+                                                <th scope='col'>Nome <span class='column-sorter'></span></th>
+                                                <th scope='col'>Celular <span class='column-sorter'></span></th>
+                                                <th scope='col'>Email <span class='column-sorter'></span></th>
+                                                <th scope='col'>Data de Nasc. <span class='column-sorter'></span></th>
+                                                <th scope='col'>Opção <span class='column-sorter'></span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>";
+                                        foreach ($users as $usuario) {
+                                            $usuarioID = $usuario['id'];
+                                                echo "
+                                                        <tr>
+                                                            <td>".$usuarioID."</td>
+                                                            <td>".$usuario['nome']."</td>
+                                                            <td>".$usuario['celular']."</td>
+                                                            <td>".$usuario['email']."</td>
+                                                            <td>".$usuario['aniversario']."</td>
+                                                            <td style='text-align:center;'>
+                                                            <a href=''><i class='aweso-icon-edit'></i></a>&nbsp|&nbsp                                                       
+                                                            <a href='../../../php/controllers/clienteController.php?removeID=$usuarioID'><i class='aweso-icon-remove'></i></a>
+                                                            </td>                                                        
+                                                        </tr>";
+                                        }
+    echo                           "</tbody>
+                                    </table>
+                                    <!-- // DATATABLE - DTB-1 -->
                                     
-
-foreach ($users as $usuarios) {
-   echo       "                      <tbody>
-                                            <td>".$usuarios['id']."</td>
-                                            <td>".$usuarios['nome']."</td>
-                                            <td>".$usuarios['nascimento']."</td>
-                                            <td>".$usuarios['celular']."</td>
-                                            <td>".$usuarios['email']."</td>
-                                        </tr>
-                                    </tbody>";                           
-}
-
-echo "  </table>
-                                <!-- // DATATABLE - DTB-1 -->
+                                </div>
+                                <!-- // Widget -->
                                 
                             </div>
-                            <!-- // Widget -->
+                            <!-- // Column -->
                             
                         </div>
-                        <!-- // Column -->
+                        <!-- // Example row -->
                         
-                    </div>
-                     
-                </section>";
+                    </section>";
 
-$PDO = NULL;
+    $PDO = NULL;
+
+}catch(PDOException $ex){
+    $PDO = NULL;
 }
+}//END LISTAR CLIENTES
+
+
 ?>

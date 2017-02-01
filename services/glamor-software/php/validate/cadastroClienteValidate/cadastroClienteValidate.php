@@ -17,18 +17,23 @@
             //Validando telefone celular
         if(strlen(str_replace('_', '', $_POST['accountPhoneNumber']).trim()) < 16){//verificar se ta no formato e tamanho certo.
             $resultadoDaValidacao = false;
+            $menssagem .= 'Formato de celular invalido<br>';
         }elseif(strlen($_POST['accountFaxNumber']) == 0){//Se o telefone fixo não for preenchido
             $telefoneFixo = null;
         }elseif(strlen($_POST['accountFirstName']) < 10 && strlen($_POST['accountFirstName']) > 45){//validando Nome
             $resultadoDaValidacao = false;
+            $menssagem .= 'Nome invalido<br>';
         }elseif(strlen($_POST['accountDob']) != 10){//validando Data NIver
             $resultadoDaValidacao = false;
+            $menssagem .= 'Formato de data invalido<br>';
         }elseif(strlen($_POST['accountSenha']) > 45 ){// Validando senha
             $resultadoDaValidacao = false;
+            $menssagem .= 'Verifique a senha<br>';
         }
         cadastrarCliente($resultadoDaValidacao);
     }else{
         $resultadoDaValidacao = false;
+        $menssagem .= 'Nem todos os campos recebido';
     }
 }
 
@@ -67,7 +72,7 @@ function cadastrarCliente($resultadoDaValidacao){
             }
         catch(PDOException $e)
             {
-            $menssagem .= 'Erro ao efetuar o cadastro!<br>Verifique os campos';
+            $menssagem .= 'Erro ao gravar no banco de dados';
             header("Location: ../../../index/components/cadastro/cadastro-cliente.php?resultado=alert-error&menssagem=$menssagem");
             }
             $conn = null;

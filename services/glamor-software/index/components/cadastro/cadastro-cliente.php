@@ -43,9 +43,8 @@ require_once('../../../php/controllers/clienteController.php');
                 <div class="page-bar">
                     <div class="btn-toolbar">
                         <ul class="nav nav-tabs pull-left">
-                            <li class="active" id="user-tab"> <a href="#TabTop1" data-toggle="tab">Cadastro de cliente</a> </li>
-                            <li id="articles-tab"> <a href="#TabTop2" data-toggle="tab">Listar Clientes</a> </li>
-                            <!--<li id="wizard-tab"> <a href="#TabTop3" data-toggle="tab">Wizard</a> </li> -->
+                            <li class="active" id="user-tab"> <a href="#TabTop1" data-toggle="tab">Cadastro de cliente</a></li>
+                            <li id="articles-tab"> <a href="#TabTop2" data-toggle="tab">Listar Clientes</a> </li>                            
                         </ul>
                     </div>
                 </div>
@@ -55,7 +54,7 @@ require_once('../../../php/controllers/clienteController.php');
             <div id="page-content" class="page-content tab-content overflow-y">
                 <div id="TabTop1" class="tab-pane padding-bottom30 active fade in">
                     <div class="page-header">
-                        <h3><i class="aweso-icon-list-alt opaci35"></i> Formulario <small>Clientes.</small></h3>
+                        <h3><i class="aweso-icon-list-alt opaci35"></i> Formulario <small>Clientes</small></h3>
                     </div>
                     <div class="row-fluid">
                         <div class="span8 grider">
@@ -70,10 +69,17 @@ require_once('../../../php/controllers/clienteController.php');
                                         <?php if(isset($_GET['resultado'])){ 
                                         echo "<div class='alert ".$_GET['resultado']."'>".$_GET['menssagem']."<button type='button' class='close' data-dismiss='alert'>&times;</button>
                                             </div>";
+                                            }elseif(isset($_GET['removesucess'])){
+                                                if($_GET['removesucess'] == 'yes'){
+                                                echo "<div class='alert alert-success'><strong style='color: green'>Sucesso!</strong> Cliente removido<button type='button' class='close' data-dismiss='alert'>&times;</button>
+                                                                </div>";
+                                            }else{
+                                                echo "<div class='alert alert-error'><strong style='color: red'>Erro!</strong> Não foi possivel remover<button type='button' class='close' data-dismiss='alert'>&times;</button>
+                                                                </div>";
                                             }
+                                        }
                                         ?>   
 
-                                        
                                         <form id="accounForm" class="form-horizontal" method="post" action="../../../php/validate/cadastroClienteValidate/cadastroClienteValidate.php" >
                                             <div class="row-fluid">
                                                 <div class="span12 form-dark">
@@ -162,16 +168,12 @@ require_once('../../../php/controllers/clienteController.php');
                 <!-- // Example TAB 1 -->
                 
                 <div id="TabTop2" class="tab-pane fade padding-bottom30">
-                    <div class="page-header">
-                        <h3><i class="fontello-icon-doc-2 opaci35"></i> Listagem <small>Clientes</small></h3>
+                   <div class='page-header'>                      
+                        <h3><i class='aweso-icon-table opaci35'></i> Listagem <small>Clientes</small></h3>
                     </div>
                     <div class="row-fluid">
                         <div class="span8 grider">
                             <div class="widget well well-nice">
-                                <div class="widget-header">
-                                    <h4><i class="fontello-icon-article-alt-1"></i> Busca de usuarios</h4>
-                                    <div class="btn-toolbar pull-right"> <a class="btn btn-green" href="javascript:void(0);">carregar</a></div>
-                                </div>
                                 <div class="widget-content">
                                     <div class="widget-body">
                                         <form id="itemForm" class="span12 form-horizontal" method="" action="" >

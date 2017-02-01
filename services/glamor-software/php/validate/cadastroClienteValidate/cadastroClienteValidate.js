@@ -79,7 +79,7 @@ $(document).ready(function ($) {
 function sussessoNoCadastro(){
 	$('#divSucesso').removeClass( 'hide' );
 	$('#divSucesso').addClass( 'alert-success' );
-    $('#divSucesso').append('<strong style="color: red">Sucesso!</strong> Cadastro efetuado!');
+    $('#divSucesso').append('<strong style="color: green">Sucesso!</strong> Cadastro efetuado!');
 }
 
 function erroNoCadastro(){
