@@ -45,13 +45,14 @@ require_once('../../../php/controllers/clienteController.php');
                         <ul class="nav nav-tabs pull-left">
                             <li class="active" id="user-tab"> <a href="#TabTop1" data-toggle="tab">Cadastro de cliente</a></li>
                             <li id="articles-tab"> <a href="#TabTop2" data-toggle="tab">Listar Clientes</a> </li>                            
+                            <li id="articles-tab"> <a href="#TabTop3" data-toggle="tab">Editar Clientes</a> </li>                            
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- // page head -->
             
-            <div id="page-content" class="page-content tab-content overflow-y">
+            <div id="page-content" class="page-content tab-content overflow-y">                
                 <div id="TabTop1" class="tab-pane padding-bottom30 active fade in">
                     <div class="page-header">
                         <h3><i class="aweso-icon-list-alt opaci35"></i> Formulario <small>Clientes</small></h3>
@@ -156,14 +157,9 @@ require_once('../../../php/controllers/clienteController.php');
                                         </form>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- // Widget --> 
-                            
-                        </div>
-                        <!-- // Column -->
-                        
+                            </div>                                                      
+                        </div>  
                     </div>
-                    <!-- // Example row --> 
                 </div>
                 <!-- // Example TAB 1 -->
                 
@@ -191,37 +187,124 @@ require_once('../../../php/controllers/clienteController.php');
                                     </div>
                                 </div>
                             </div>
-                            <!-- // Widget --> 
-                            
                         </div>
-                        <!-- // Column -->
-                        
                         <div class="span4 grider">
-                            
-                            <!-- // Widget -->
-                            
-                           
-                            <!-- // Widget --> 
-                            
                         </div>
-                        <!-- // Column --> 
-                        
+                    </div>                  
+                </div>   
+            <!--Exit TabTop2 -->
+
+            <!--TAbTop 3 -->
+                <div id="TabTop3" class="tab-pane padding-bottom30 active fade in">
+                    <div class="page-header">
+                        <h3><i class="aweso-icon-list-alt opaci35"></i> Editar <small>Clientes</small></h3>
                     </div>
-                    <!-- // Example row --> 
-                </div>
-                <!-- // Example TAB 2 -->
-                
-                <!-- // Example TAB 3 --> 
-                
+                    <div class="row-fluid">
+                        <div class="span8 grider">
+                            <div class="widget widget-simple">
+                                <div class="widget-content">
+                                    <div class="widget-body">
+
+                                        <!-- INICIO DO FORM CADASTRO CLIENTE
+                                        <?php if(isset($_GET['resultado'])){ 
+                                        echo "<div class='alert ".$_GET['resultado']."'>".$_GET['menssagem']."<button type='button' class='close' data-dismiss='alert'>&times;</button>
+                                            </div>";
+                                            }elseif(isset($_GET['removesucess'])){
+                                                if($_GET['removesucess'] == 'yes'){
+                                                echo "<div class='alert alert-success'><strong style='color: green'>Sucesso!</strong> Cliente removido<button type='button' class='close' data-dismiss='alert'>&times;</button>
+                                                                </div>";
+                                            }else{
+                                                echo "<div class='alert alert-error'><strong style='color: red'>Erro!</strong> Não foi possivel remover<button type='button' class='close' data-dismiss='alert'>&times;</button>
+                                                                </div>";
+                                            }
+                                        }
+                                        ?>   -->
+
+                                        <form id="accounForm" class="form-horizontal" method="post" action="../../../php/validate/cadastroClienteValidate/cadastroClienteValidate.php" >
+                                            <div class="row-fluid">
+                                                <div class="span12 form-dark">
+                                                    <fieldset>
+                                                        <ul class="form-list label-left list-bordered dotted">
+                                                            <li class="section-form">
+                                                                <h4>Dados pessoais</h4>
+                                                            </li>
+                                                            
+                                                            <!-- // section form divider -->
+                                                            <li class="control-group">
+                                                                <label for="accountFirstName" class="control-label">Nome completo <span class="required">*</span></label>
+                                                                <div class="controls">
+                                                                    <input id="accountFirstName" class="span11" type="text" name="accountFirstName" value="">
+                                                                </div>
+                                                            </li>
+
+                                                            <!-- // form item -->
+                                                            <!--genero -->
+                                                            <!-- // form item -->
+                                                            
+                                                            <li class="control-group">
+                                                                <label for="accountDob" class="control-label">Data de nascimento <span class="required">*</span></label>
+                                                                <div class="controls">
+                                                                    <input id="accountDob" class="span6" type="text" name="accountDob" locate="pt-BR" value="" placeholder="00-00-0000">
+                                                                </div>
+                                                            </li>
+                                                            <!-- // form item -->
+                                                            
+                                                            <li class="section-form">
+                                                                <h4>Informação do contato</h4>
+                                                            </li>
+                                                            <!-- // section form divider -->
+                                                            
+                                                            <li class="control-group">
+                                                                <label for="accountEmail" class="control-label">Email <span class="required">*</span></label>
+                                                                <div class="controls">
+                                                                    <div class="input-append block">
+                                                                        <input id="accountEmail" class="span6" type="text" name="accountEmail" value="">
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="control-group">
+                                                                <label for="accountSenha" class="control-label">Senha <span class="required">*</span></label>
+                                                                <div class="controls">
+                                                                    <div class="input-append block">
+                                                                        <input id="accountSenha" class="span6" type="password" name="accountSenha" value="">
+                                                                </div>
+                                                            </li>
+                                                            <!-- // form item -->
+                                                            
+                                                            <li class="control-group">
+                                                                <label for="accountPhoneNumber" class="control-label">Celular <span class="required">*</span></label>
+                                                                <div class="controls controls-row">
+                                                                    <input id="accountPhoneNumber" class="span6 maskPhone margin-right5" type="text" name="accountPhoneNumber" value="">
+                                                                </div>
+                                                            </li>
+                                                            <!-- // form item -->
+                                                            
+                                                            <li class="control-group">
+                                                                <label for="accountFaxNumber" class="control-label">Fixo</label>
+                                                                <div class="controls controls-row">
+                                                                    <input id="accountFaxNumber" class="span6 maskPhoneFixo margin-right5" type="text" name="accountFaxNumber" value="">
+                                                            </li>
+                                                            <!-- // form item -->
+                                                        </ul>
+                                                    </fieldset>
+                                                    <!-- // fieldset Input -->
+                                                    <div class="form-actions">
+                                                        <button class="btn btn-blue">Enviar & Validar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>                                                      
+                        </div>  
+                    </div>
+                    <!-- Exit tabTop3 -->
+
             </div>
-            <!-- // page content --> 
-            
         </div>
-        <!-- // main-content --> 
-        
     </div>
-    <!-- // main-container  -->
-    
+     
    <!-- footer -->
 <?php include_once '../comuns/footer.html';?>
     <!-- // END footer-fix  --> 

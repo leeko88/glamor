@@ -4,22 +4,47 @@ session_start();
 //REMOVER CLIENTES
 if(isset($_GET['removeID'])){
 require_once('../connection/connection.php');
-   try{
-    $PDO = conexaoComBancoDeDados($_SESSION['user_bd']);
-    echo $_SESSION['user_bd'];
+    try {
+    $conn = conexaoComBancoDeDados($_SESSION['user_bd']);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "DELETE FROM user_client WHERE id = '".$_GET['removeID']."'";
-    $stmt = $PDO->prepare($sql);
-
-    $stmt->execute();
-    $PDO = NULL;
+    $sql = "DELETE FROM user_client WHERE id='".$_GET['removeID']."'";
+    if($conn->exec($sql)){
+    $conn = null;
     header("Location: ../../index/components/cadastro/cadastro-cliente.php?removesucess=yes");
-    
-    }catch(PDOException $e){
-    $PDO = NULL;
+    }else{
+    $conn = null;
     header("Location: ../../index/components/cadastro/cadastro-cliente.php?removesucess=no");
-    }         
+    }
+}
+catch(PDOException $e)
+    {
+    $conn = null;
+    header("Location: ../../index/components/cadastro/cadastro-cliente.php?removesucess=no");
+    }
+    
+            
 }//END REMOVER CLIENTES
+
+//EDITAR CLIENTES
+function editarCliente($id){
+    try {
+    $conn = conexaoComBancoDeDados($_SESSION['user_bd']);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sql = "SELECT * FROM user_client WHERE id=$id";
+    if($conn->exec($sql)){
+    header("Location: ../../index/components/cadastro/cadastro-cliente.php?removesucess=yes");
+    }else{
+    header("Location: ../../index/components/cadastro/cadastro-cliente.php?removesucess=no");
+    }
+}
+catch(PDOException $e)
+    {
+    header("Location: ../../index/components/cadastro/cadastro-cliente.php?removesucess=no");
+    }
+}
+
 
 //LISTAR CLIENTES
 function listarUsuario(){
@@ -51,16 +76,25 @@ function listarUsuario(){
                                         <tbody>";
                                         foreach ($users as $usuario) {
                                             $usuarioID = $usuario['id'];
+                                            $nome = $usuario['nome'];
+                                            $nascimento = $usuario['aniversario'];
+                                            $celular = $usuario['celular'];
+                                            $telefone = $usuario['telefone'];
+                                            $email = $usuario['email'];
+                                            $password = $usuario['password'];
                                                 echo "
                                                         <tr>
                                                             <td>".$usuarioID."</td>
-                                                            <td>".$usuario['nome']."</td>
-                                                            <td>".$usuario['celular']."</td>
-                                                            <td>".$usuario['email']."</td>
-                                                            <td>".$usuario['aniversario']."</td>
+                                                            <td>".$nome."</td>
+                                                            <td>".$celular."</td>
+                                                            <td>".$email."</td>
+                                                            <td>".$nascimento."</td>
                                                             <td style='text-align:center;'>
-                                                            <a href=''><i class='aweso-icon-edit'></i></a>&nbsp|&nbsp                                                       
-                                                            <a href='../../../php/controllers/clienteController.php?removeID=$usuarioID'><i class='aweso-icon-remove'></i></a>
+                                                            <a href='?id=$usuarioID&nome=$nome&nascimento=$nascimento&celular=$celular&telefone=$telefone&email=$email&password=$password'>
+                                                            <li style='width:4%;' class='btn btn-blue'>
+                                                            <i style='margin-left:-4px;' class='aweso-icon-edit'></i></li></a>                                                            
+                                                            <li style='width:4%;' id='".$usuarioID."'
+                                                             data-type='confirm' data-layout='center' class='btn btn-red runner clienteRemove'>X</li>                                                            
                                                             </td>                                                        
                                                         </tr>";
                                         }
@@ -79,12 +113,14 @@ function listarUsuario(){
                         
                     </section>";
 
-    $PDO = NULL;
+    $PDO = null;
 
 }catch(PDOException $ex){
-    $PDO = NULL;
+    $PDO = null;
 }
 }//END LISTAR CLIENTES
 
-
 ?>
+
+<!-- <li id="articles-tab"> <a href="#TabTop2" data-toggle="tab">Listar Clientes</a> </li>                            
+href='../../php/controllers/clienteController.php?edit=$usuarioID' -->
