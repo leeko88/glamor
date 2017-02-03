@@ -39,8 +39,7 @@
 
 function cadastrarCliente($resultadoDaValidacao){
     if($resultadoDaValidacao){
-        try {
-            
+        try {            
             $bancoDeDados = $_SESSION['user_bd'];
             
             $conn = conexaoComBancoDeDados($bancoDeDados);
@@ -55,8 +54,16 @@ function cadastrarCliente($resultadoDaValidacao){
             }
 
             // preparar sql and parameters
-            $sql = $conn->prepare("INSERT INTO user_client 
+            if(isset($_GET['editar'])){
+                $id = $_GET['editar'];
+                $sql = $conn->prepare("UPDATE user_client SET 
+                nome = :nome, nascimento = str_to_date(:nascimento, '%d/%m/%Y'), celular = :celular, telefone = :telefone, email = :email, password = :password 
+                WHERE id = $id");
+            }else{
+                $sql = $conn->prepare("INSERT INTO user_client 
             VALUES (null, :nome, str_to_date(:nascimento, '%d/%m/%Y'), :celular, :telefone, :email, :password)");
+            }
+            
 
             $sql->bindParam(':nome', $_POST['accountFirstName']);
             $sql->bindParam(':nascimento', str_replace('-','/',$_POST['accountDob']));
@@ -66,7 +73,7 @@ function cadastrarCliente($resultadoDaValidacao){
             $sql->bindParam(':telefone', $telefoneFixo);
             $sql->execute();
 
-            $menssagem .= 'Cadastro feito com sucesso!';
+            $menssagem .= 'Efetuado com sucesso!';
             header("Location: ../../../index/components/cadastro/cadastro-cliente.php?resultado=alert-success&menssagem=$menssagem");
 
             }

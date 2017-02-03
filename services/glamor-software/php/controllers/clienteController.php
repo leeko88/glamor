@@ -90,7 +90,7 @@ function listarUsuario(){
                                                             <td>".$email."</td>
                                                             <td>".$nascimento."</td>
                                                             <td style='text-align:center;'>
-                                                            <a href='?id=$usuarioID&nome=$nome&nascimento=$nascimento&celular=$celular&telefone=$telefone&email=$email&password=$password'>
+                                                            <a href='../../components/cadastro/editarCadastro.php?tipo=cliente&id=$usuarioID&nome=$nome&nascimento=$nascimento&celular=$celular&telefone=$telefone&email=$email&password=$password'>
                                                             <li style='width:4%;' class='btn btn-blue'>
                                                             <i style='margin-left:-4px;' class='aweso-icon-edit'></i></li></a>                                                            
                                                             <li style='width:4%;' id='".$usuarioID."'
