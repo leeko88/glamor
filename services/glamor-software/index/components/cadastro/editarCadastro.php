@@ -129,6 +129,84 @@ echo                 "<div class='page-header'>
                                 </div>
                             </div>                                                      
                         </div>";  
+    }elseif($_GET['tipo'] == 'fornecedor'){//se for fornecedor
+        $id = $_GET['id'];
+        $nome = $_GET['nome'];
+        $endereco = $_GET['endereco'];
+        $cnpj = $_GET['cnpj'];
+        $email = $_GET['email'];
+        $telefone = $_GET['telefone'];
+        $contato = $_GET['contato'];
+//Monta o layout
+echo                 "<div class='page-header'>
+                        <h3><i class='aweso-icon-list-alt opaci35'></i> Editar <small>Clientes</small></h3>
+                    </div>
+                    <div class='row-fluid'>
+                        <div class='span8 grider'>
+                            <div class='widget widget-simple'>
+                                <div class='widget-content'>
+                                    <div class='widget-body'>
+                                        <form id='accounForm' class='form-horizontal' method='post' action='../../../php/validate/cadastroClienteValidate/cadastroClienteValidate.php?editar=$id' >
+                                            <div class='row-fluid'>
+                                                <div class='span12 form-dark'>
+                                                    <fieldset>
+                                                        <ul class='form-list label-left list-bordered dotted'>
+                                                            <li class='section-form'>
+                                                                <h4>Dados pessoais</h4>
+                                                            </li>
+                                                            <li class='control-group'>
+                                                                <label for='accountFirstName' class='control-label'>Nome completo <span class='required'>*</span></label>
+                                                                <div class='controls'>
+                                                                    <input id='accountFirstName' class='span11' type='text' name='accountFirstName' value='$nome'>
+                                                                </div>
+                                                            </li>
+                                                            <li class='control-group'>
+                                                                <label for='accountDob' class='control-label'>Data de nascimento <span class='required'>*</span></label>
+                                                                <div class='controls'>
+                                                                    <input id='accountDob' class='span6' type='text' name='accountDob' locate='pt-BR' value='$endereco'>
+                                                                </div>
+                                                            </li>
+                                                            <li class='section-form'>
+                                                                <h4>Informação do contato</h4>
+                                                            </li>
+                                                            <li class='control-group'>
+                                                                <label for='accountEmail' class='control-label'>Email <span class='required'>*</span></label>
+                                                                <div class='controls'>
+                                                                    <div class='input-append block'>
+                                                                        <input style='width:100%;' id='accountEmail' class='span6' type='text' name='accountEmail' value='$email'>
+                                                                </div>
+                                                            </li>
+                                                            <li class='control-group'>
+                                                                <label for='accountSenha' class='control-label'>Senha <span class='required'>*</span></label>
+                                                                <div class='controls'>
+                                                                    <div class='input-append block'>
+                                                                        <input style='width:100%;' id='accountSenha' class='span6' type='' name='accountSenha' value='$password'>
+                                                                </div>
+                                                            </li>
+                                                            <li class='control-group'>
+                                                                <label for='accountPhoneNumber' class='control-label'>Celular <span class='required'>*</span></label>
+                                                                <div class='controls controls-row'>
+                                                                    <input id='accountPhoneNumber' class='span6 maskPhone margin-right5' type='text' name='accountPhoneNumber' value='$celular'>
+                                                                </div>
+                                                            </li>
+                                                            
+                                                            <li class='control-group'>
+                                                                <label for='accountFaxNumber' class='control-label'>Fixo</label>
+                                                                <div class='controls controls-row'>
+                                                                    <input id='accountFaxNumber' class='span6 maskPhoneFixo margin-right5' type='text' name='accountFaxNumber' value='$telefone'>
+                                                            </li>
+                                                        </ul>
+                                                    </fieldset>
+                                                    <div class='form-actions'>
+                                                        <button class='btn btn-blue'>Atualizar & Validar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>                                                      
+                        </div>";  
     }
 
 echo    " </div>

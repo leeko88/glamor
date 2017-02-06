@@ -1,6 +1,6 @@
 <?php
 require_once('../comuns/session.php');
-require_once('../../../php/controllers/clienteController.php');
+require_once('../../../php/controllers/fornecedorController.php');
 
 
 ?>
@@ -79,7 +79,7 @@ require_once('../../../php/controllers/clienteController.php');
                                         }
                                         ?>   
 
-                                        <form id="accounForm" class="form-horizontal" method="post" action="../../../php/validate/cadastroClienteValidate/cadastroClienteValidate.php" >
+                                        <form id="accounForm" class="form-horizontal" method="post" action="../../../php/validate/cadastroFornecedorValidate/cadastroFornecedorValidate.php" >
                                             <div class="row-fluid">
                                                 <div class="span12 form-dark">
                                                     <fieldset>
@@ -90,9 +90,9 @@ require_once('../../../php/controllers/clienteController.php');
                                                             
                                                             <!-- // section form divider -->
                                                             <li class="control-group">
-                                                                <label for="accountFirstName" class="control-label">Empresa (Raz. Social) <span class="required">*</span></label>
+                                                                <label for="accountEmpresaName" class="control-label">Empresa (Raz. Social) <span class="required">*</span></label>
                                                                 <div class="controls">
-                                                                    <input id="accountFirstName" class="span11" type="text" name="accountFirstName" value="">
+                                                                    <input id="accountEmpresaName" class="span11" type="text" name="accountEmpresaName" value="">
                                                                 </div>
                                                             </li>
 
@@ -101,16 +101,16 @@ require_once('../../../php/controllers/clienteController.php');
                                                             <!-- // form item -->
                                                             
                                                             <li class="control-group">
-                                                                <label for="endereco" class="control-label">Endereço <span class="required">*</span></label>
+                                                                <label for="accountEndereco" class="control-label">Endereço <span class="required">*</span></label>
                                                                 <div class="controls">
-                                                                    <textarea id="endereco" class="span6" name="endereco" rows="5" cols=""></textarea>
+                                                                    <textarea id="accountEndereco" class="span6" name="accountEndereco" rows="5" cols=""></textarea>
                                                                 </div>
                                                             </li>
 
                                                             <li class="control-group">
-                                                                <label for="cnpj" class="control-label">CNPJ/CPF <span class="required">*</span></label>
+                                                                <label for="accountCNPJ" class="control-label">CNPJ/CPF <span class="required">*</span></label>
                                                                 <div class="controls">
-                                                                    <input id="cnpj" class="span6" type="text-area" name="cnpj" locate="pt-BR" value="" >
+                                                                    <input id="accountCNPJ" class="span6" type="text-area" name="accountCNPJ" locate="pt-BR" value="" >
                                                                 </div>
                                                             </li>
                                                             <!-- // form item -->
@@ -129,10 +129,10 @@ require_once('../../../php/controllers/clienteController.php');
                                                             </li>
 
                                                             <li class="control-group">
-                                                                <label for="nomeContato" class="control-label">Nome do contato<span class="required">*</span></label>
+                                                                <label for="accountContato" class="control-label">Nome do contato<span class="required">*</span></label>
                                                                 <div class="controls">
                                                                     <div class="input-append block">
-                                                                        <input id="nomeContato" class="span6" type="text" name="nomeContato" value="">
+                                                                        <input id="accountContato" class="span6" type="text" name="accountContato" value="">
                                                                 </div>
                                                             </li>
                                                             <!-- // form item -->
@@ -140,7 +140,7 @@ require_once('../../../php/controllers/clienteController.php');
                                                             <li class="control-group">
                                                                 <label for="accountFaxNumber" class="control-label">Fixo/Celular</label>
                                                                 <div class="controls controls-row">
-                                                                    <input id="accountFaxNumber" class="span6 maskPhoneFixo margin-right5" type="text" name="accountNumber" value="">
+                                                                    <input id="accountFaxNumber" class="span6 maskPhoneFixo margin-right5" type="text" name="accountFaxNumber" value="">
                                                             </li>
                                                             <!-- // form item -->
                                                         </ul>
@@ -208,7 +208,7 @@ require_once('../../../php/controllers/clienteController.php');
 
 <!-- javascript da pagina -->
 <script src="../../../../../js/bootstrap/bootstrap-wysihtml5/wysihtml5.js"></script>
-<script src="../../../php/validate/cadastroClienteValidate/cadastroClienteValidate.js"></script>
+<script src="../../../php/validate/cadastroFornecedorValidate/cadastroFornecedorValidate.js"></script>
 <!-- end javascript -->
 
 <!-- retira o active dos menus e adiciona nele -->
