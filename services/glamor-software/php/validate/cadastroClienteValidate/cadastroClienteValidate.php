@@ -43,15 +43,7 @@ function cadastrarCliente($resultadoDaValidacao){
             $bancoDeDados = $_SESSION['user_bd'];
             
             $conn = conexaoComBancoDeDados($bancoDeDados);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            //Se o email não existir pode cadastrar.
-            if(!verificarEmail($_POST['accountEmail'], $bancoDeDados)){
-            $menssagem .= "Email já cadastrado";
-            header("Location: ../../../index/components/cadastro/cadastro-cliente.php?resultado=alert-error&menssagem=$menssagem");
-            $conn = null;
-            exit;
-            }
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);          
 
             // preparar sql and parameters
             if(isset($_GET['editar'])){
@@ -60,6 +52,13 @@ function cadastrarCliente($resultadoDaValidacao){
                 nome = :nome, nascimento = str_to_date(:nascimento, '%d/%m/%Y'), celular = :celular, telefone = :telefone, email = :email, password = :password 
                 WHERE id = $id");
             }else{
+                //Se o email não existir pode cadastrar.
+                 if(!verificarEmail($_POST['accountEmail'], $bancoDeDados)){
+                    $menssagem .= "Email já cadastrado";
+                    header("Location: ../../../index/components/cadastro/cadastro-cliente.php?resultado=alert-error&menssagem=$menssagem");
+                    $conn = null;
+                    exit;
+                }
                 $sql = $conn->prepare("INSERT INTO user_client 
             VALUES (null, :nome, str_to_date(:nascimento, '%d/%m/%Y'), :celular, :telefone, :email, :password)");
             }

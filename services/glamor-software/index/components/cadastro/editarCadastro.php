@@ -35,9 +35,13 @@ include_once '../comuns/sidebar-main.html';
                 <div class='page-bar'>
                     <div class='btn-toolbar'>
                         <ul class='nav nav-tabs pull-left'>
-                            <li class='active'> <a href=''>Editar Cliente</a></li>
-                              <li> <a href='cadastro-cliente.php'>Cancelar | Voltar</a></li>
-                        </ul>
+                            <li class='active'> <a href=''>Editar Cliente</a></li>";
+                              if($_GET['tipo'] ==  'cliente'){
+                              echo "<li> <a href='cadastro-cliente.php'>Cancelar | Voltar</a></li>";
+                              }elseif($_GET['tipo'] ==  'fornecedor'){
+                              echo "<li> <a href='cadastro-fornecedor.php'>Cancelar | Voltar</a></li>";
+                              }
+echo"                    </ul>
                     </div>
                 </div>
             </div>
@@ -146,30 +150,37 @@ echo                 "<div class='page-header'>
                             <div class='widget widget-simple'>
                                 <div class='widget-content'>
                                     <div class='widget-body'>
-                                        <form id='accounForm' class='form-horizontal' method='post' action='../../../php/validate/cadastroClienteValidate/cadastroClienteValidate.php?editar=$id' >
+                                        <form id='accounForm' class='form-horizontal' method='post' action='../../../php/validate/cadastroFornecedorValidate/cadastroFornecedorValidate.php?editar=$id' >
                                             <div class='row-fluid'>
                                                 <div class='span12 form-dark'>
                                                     <fieldset>
                                                         <ul class='form-list label-left list-bordered dotted'>
                                                             <li class='section-form'>
-                                                                <h4>Dados pessoais</h4>
+                                                                <h4>Dados da empresa</h4>
                                                             </li>
                                                             <li class='control-group'>
-                                                                <label for='accountFirstName' class='control-label'>Nome completo <span class='required'>*</span></label>
+                                                                <label for='accountEmpresaName' class='control-label'>Empresa (Razao Social) <span class='required'>*</span></label>
                                                                 <div class='controls'>
-                                                                    <input id='accountFirstName' class='span11' type='text' name='accountFirstName' value='$nome'>
+                                                                    <input id='accountEmpresaName' class='span11' type='text' name='accountEmpresaName' value='$nome'>
                                                                 </div>
                                                             </li>
                                                             <li class='control-group'>
-                                                                <label for='accountDob' class='control-label'>Data de nascimento <span class='required'>*</span></label>
+                                                                <label for='accountEndereco' class='control-label'>Endereço <span class='required'>*</span></label>
                                                                 <div class='controls'>
-                                                                    <input id='accountDob' class='span6' type='text' name='accountDob' locate='pt-BR' value='$endereco'>
+                                                                    <textarea id='accountEndereco' rows='5' cols='' name='accountEndereco' >$endereco</textarea>
                                                                 </div>
                                                             </li>
                                                             <li class='section-form'>
                                                                 <h4>Informação do contato</h4>
                                                             </li>
                                                             <li class='control-group'>
+                                                                <label for='accountCNPJ' class='control-label'>CNPJ/CPF <span class='required'>*</span></label>
+                                                                <div class='controls'>
+                                                                    <div class='input-append block'>
+                                                                        <input style='width:100%;' id='accountCNPJ' class='span6' type='text' name='accountCNPJ' value='$cnpj'>
+                                                                </div>
+                                                            </li>
+                                                             <li class='control-group'>
                                                                 <label for='accountEmail' class='control-label'>Email <span class='required'>*</span></label>
                                                                 <div class='controls'>
                                                                     <div class='input-append block'>
@@ -177,23 +188,15 @@ echo                 "<div class='page-header'>
                                                                 </div>
                                                             </li>
                                                             <li class='control-group'>
-                                                                <label for='accountSenha' class='control-label'>Senha <span class='required'>*</span></label>
-                                                                <div class='controls'>
-                                                                    <div class='input-append block'>
-                                                                        <input style='width:100%;' id='accountSenha' class='span6' type='' name='accountSenha' value='$password'>
-                                                                </div>
+                                                                <label for='accountContato' class='control-label'>Contato<span class='required'>*</span></label>
+                                                                <div class='controls controls-row'>
+                                                                    <input style='width:100%;' id='accountContato' class='span6 margin-right5' type='text' name='accountContato' value='$contato'>
                                                             </li>
                                                             <li class='control-group'>
-                                                                <label for='accountPhoneNumber' class='control-label'>Celular <span class='required'>*</span></label>
+                                                                <label for='accountFaxNumber' class='control-label'>Telefone/Celular <span class='required'>*</span></label>
                                                                 <div class='controls controls-row'>
-                                                                    <input id='accountPhoneNumber' class='span6 maskPhone margin-right5' type='text' name='accountPhoneNumber' value='$celular'>
+                                                                    <input id='accountFaxNumber' class='span6 margin-right5' type='text' name='accountFaxNumber' value='$telefone'>
                                                                 </div>
-                                                            </li>
-                                                            
-                                                            <li class='control-group'>
-                                                                <label for='accountFaxNumber' class='control-label'>Fixo</label>
-                                                                <div class='controls controls-row'>
-                                                                    <input id='accountFaxNumber' class='span6 maskPhoneFixo margin-right5' type='text' name='accountFaxNumber' value='$telefone'>
                                                             </li>
                                                         </ul>
                                                     </fieldset>
@@ -219,11 +222,15 @@ echo "
 </div>";
 include_once '../comuns/javascript.html';
 echo "
-<script src='../../../../../js/bootstrap/bootstrap-wysihtml5/wysihtml5.js'></script>
-<script src='../../../php/validate/cadastroClienteValidate/cadastroClienteValidate.js'></script>
-
+<script src='../../../../../js/bootstrap/bootstrap-wysihtml5/wysihtml5.js'></script>";
+if($_GET['tipo'] ==  'cliente'){
+echo "<script src='../../../php/validate/cadastroClienteValidate/cadastroClienteValidate.js'></script>";
+}elseif($_GET['tipo'] ==  'fornecedor'){
+echo "<script src='../../../php/validate/cadastroFornecedorValidate/cadastroFornecedorValidate.js'></script>";
+}
+echo "
 <script>
-$(function($) {	    
+$(function($) {	    (86) 6918-1818
     $('#cadastro').addClass('active');
     $('#notificacao').removeClass('active');
 });

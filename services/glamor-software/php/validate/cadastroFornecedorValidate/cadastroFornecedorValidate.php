@@ -32,28 +32,20 @@
         }elseif(strlen($_POST['accountEmail']) <= 0 ){
             $menssagem .= 'Verifique o campo Email';
         }
-        cadastrarCliente($resultadoDaValidacao);
+        cadastrarFornecedor($resultadoDaValidacao);
     }else{
         $resultadoDaValidacao = false;
         $menssagem .= 'Nem todos os campos recebido';
     }
 }
 
-function cadastrarCliente($resultadoDaValidacao){
+function cadastrarFornecedor($resultadoDaValidacao){
     if($resultadoDaValidacao){
         try {            
             $bancoDeDados = $_SESSION['user_bd'];
             
             $conn = conexaoComBancoDeDados($bancoDeDados);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            //Se o email não existir pode cadastrar.
-            if(!verificarEmail($_POST['accountEmail'], $bancoDeDados)){
-            $menssagem .= "Email já cadastrado";
-            header("Location: ../../../index/components/cadastro/cadastro-fornecedor.php?resultado=alert-error&menssagem=$menssagem");
-            $conn = null;
-            exit;
-            }
 
             // preparar sql and parameters
             if(isset($_GET['editar'])){
@@ -62,11 +54,16 @@ function cadastrarCliente($resultadoDaValidacao){
                 nome = :nome, endereco = :endereco, cnpj = :cnpj, email = :email, telefone = :telefone, contato = :contato 
                 WHERE id = $id");
             }else{
+                //Se o email não existir pode cadastrar.
+                    if(!verificarEmail($_POST['accountEmail'], $bancoDeDados)){
+                        $menssagem .= "Email já cadastrado";
+                        header("Location: ../../../index/components/cadastro/cadastro-fornecedor.php?resultado=alert-error&menssagem=$menssagem");
+                        $conn = null;
+                        exit;
+                    }
                 $sql = $conn->prepare("INSERT INTO user_fornecedor 
                 VALUES (null, nome = :nome, endereco = :endereco, cnpj = :cnpj, email = :email, telefone = :telefone, contato = :contato)");
             }
-             $sql = $conn->prepare("INSERT INTO user_fornecedor 
-                VALUES (null, :nome, :endereco, :cnpj, :email, :telefone, :contato)");
 
             $sql->bindParam(':nome', $_POST['accountEmpresaName']);
             $sql->bindParam(':endereco', $_POST['accountEndereco']);

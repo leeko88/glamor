@@ -1,6 +1,6 @@
 <?php
 require_once('../comuns/session.php');
-require_once('../../../php/controllers/fornecedorController.php');
+//require_once('../../../php/controllers/produtoController.php');
 
 
 ?>
@@ -11,11 +11,11 @@ require_once('../../../php/controllers/fornecedorController.php');
 
 <head>
 <meta charset="utf-8">
-<title>Glamor Software - Cadastro de fornecedores</title>
+<title>Glamor Software - Cadastro de produtos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="description" content="Cadastrar fornecedores para serem utilizados para pesquisas e vendas">
+<meta name="description" content="Cadastrar produtos para serem utilizados para pesquisas e vendas">
 <meta name="author" content="Infor Sistema">
 
      <!-- Styles e Icons -->
@@ -39,12 +39,12 @@ require_once('../../../php/controllers/fornecedorController.php');
         
         <div id="main-content" class="main-content container-fluid">
             <div style="text-align:center;" class="row-fluid page-head">
-                <h2 class="page-title"><i class="aweso-icon-list-alt"></i> Fornecedores</h2>
+                <h2 class="page-title"><i class="aweso-icon-list-alt"></i> Produtos</h2>
                 <div class="page-bar">
                     <div class="btn-toolbar">
                         <ul class="nav nav-tabs pull-left">
-                            <li class="active" id="user-tab"> <a href="#TabTop1" data-toggle="tab">Cadastro de fornecedores</a></li>
-                            <li id="articles-tab"> <a href="#TabTop2" data-toggle="tab">Listar fornecedores</a> </li>                            
+                            <li class="active" id="user-tab"> <a href="#TabTop1" data-toggle="tab">Cadastro de produtos</a></li>
+                            <li id="articles-tab"> <a href="#TabTop2" data-toggle="tab">Listar produtos</a> </li>                            
                         </ul>
                     </div>
                 </div>
@@ -53,13 +53,13 @@ require_once('../../../php/controllers/fornecedorController.php');
             <div id="page-content" class="page-content tab-content overflow-y">                
                 <div id="TabTop1" class="tab-pane padding-bottom30 active fade in">
                     <div class="page-header">
-                        <h3><i class="aweso-icon-list-alt opaci35"></i> Formulario <small>Fornecedores</small></h3>
+                        <h3><i class="aweso-icon-list-alt opaci35"></i> Formulario <small>Produtos</small></h3>
                     </div>
                     <div class="row-fluid">
                         <div class="span8 grider">
                             <div class="widget widget-simple">
                                 <div class="widget-header">
-                                    <h4><i class="fontello-icon-truck"></i>Novo fornecedor</h4>
+                                    <h4><i class="fontello-icon-basket"></i>Novo produto</h4>
                                 </div>
                                 <div class="widget-content">
                                     <div class="widget-body">
@@ -85,14 +85,34 @@ require_once('../../../php/controllers/fornecedorController.php');
                                                     <fieldset>
                                                         <ul class="form-list label-left list-bordered dotted">
                                                             <li class="section-form">
-                                                                <h4>Dados da empresa</h4>
+                                                                <h4>Dados do produto</h4>
                                                             </li>
                                                             
                                                             <!-- // section form divider -->
                                                             <li class="control-group">
-                                                                <label for="accountEmpresaName" class="control-label">Empresa (Raz. Social) <span class="required">*</span></label>
+                                                                <label for="accountProdutoName" class="control-label">Descrição <span class="required">*</span></label>
                                                                 <div class="controls">
-                                                                    <input id="accountEmpresaName" class="span11" type="text" name="accountEmpresaName" value="">
+                                                                    <input id="accountProdutoName" class="span11" type="text" name="accountProdutoName" value="">
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="control-group">
+                                                                <label for="accountMarcaName" class="control-label">Unidade <span class="required">*</span></label>
+                                                                <div class="controls">
+                                                                    <select>
+                                                                    <option>Unid</option>
+                                                                    <option>M</option>
+                                                                    <option>kg</option>
+                                                                    <option>L</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="controls">
+                                                                <li class="control-group">
+                                                                <label for="accountMarcaName" class="control-label">Quantidade <span class="required">*</span></label>
+                                                                <div class="controls">
+                                                                   <input type="number" name="" value="">
+                                                                </div>
+                                                            </li>
                                                                 </div>
                                                             </li>
 
@@ -175,7 +195,7 @@ require_once('../../../php/controllers/fornecedorController.php');
                                                 <div class="span12 form-dark">
                                                     <fieldset>
                                                         <?php 
-                                                        listarUsuario();
+                                                        //listarUsuario();
                                                         ?>
                                                     </fieldset>
                                                     <!-- // fieldset Input -->

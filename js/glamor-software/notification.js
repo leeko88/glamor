@@ -32,7 +32,7 @@ $(document).ready(function () {
                     if($( "#"+id ).hasClass( "clienteRemove" )){//Se for clientes (manda para o controller do cliente)
                       window.location.href = "../../../php/controllers/clienteController.php?removeID="+id; 
                     }else if($( "#"+id ).hasClass( "fornecedorRemove" )){
-                      window.location.href = "../../../php/controllers/clienteFornecedor.php?removeID="+id; 
+                      window.location.href = "../../../php/controllers/fornecedorController.php?removeID="+id; 
                     }
                 }
             }, {
